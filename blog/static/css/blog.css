@@ -1,12 +1,10 @@
-.page-header {
-	background-color: #FF9400;
+.navbar {
 	margin-top: 0;
 	margin-bottom: 10px;
-	padding: 20px 20px 20px 40px;
+	padding: 20px 20px 20px 30px;
 }
 
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-	color: #FFFFFF;
+.navbar-brand {
 	font-size: 36pt;
 	text-decoration: none;
 }
@@ -44,7 +42,8 @@ p {
 }
 
 .post {
-	margin-bottom: 70px;
+	padding-left: 30px;
+	margin-bottom: 50px;
 }
 
 .post h1 a, .post h1 a:visited {
