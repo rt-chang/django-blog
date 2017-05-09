@@ -1,40 +1,43 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-	<div class="post">
-		{% if post.published_date %}
-			<div class="date">
-				{{ post.published_date }}
-			</div>
-		{% else %}
-			<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-		{% endif %}
-		
-		{% if user.is_authenticated %}
-			<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-			<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-		{% endif %}
-		
+	<div class="post col-md-8">		
 		<h1>{{ post.title }}</h1>
-		<p> {{ post.text|linebreaksbr }}</p>
-	</div>
-	<hr>
-		<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
-		{% for comment in post.comments.all %}
-			{% if user.is_authenticated or comment.approved_comment %}
-			<div class="comment">
+			{% if post.published_date %}
 				<div class="date">
-					{{ comment.created_date }}
-					{% if not comment.approved_comment %}
-						<a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-						<a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-						{% endif %}
+					<p>Published on: {{ post.published_date }}</p>
 				</div>
-				<strong>{{ comment.author }}</strong>
-				<p>{{ comment.text|linebreaks }}</p>
+			{% else %}
+				<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+		{% endif %}
+		<p> {{ post.text|linebreaksbr }}</p>
+		
+	<hr>
+	
+	<p>
+		<a href="{% url 'add_comment_to_post' pk=post.pk %}"><i class="fa fa-comment" aria-hidden="true"></i> Add Comment</a>
+	</p>
+	
+	{% for comment in post.comments.all %}
+		{% if user.is_authenticated or comment.approved_comment %}
+		<div class="comment">
+			<div class="date">
+				{{ comment.created_date }}
 			</div>
-			{% endif %}
-		{% empty %}
-			<p>No comments</p>
-		{% endfor %}
+			<strong>{{ comment.author }}</strong>
+			<p>{{ comment.text|linebreaks }}</p>
+		</div>
+		{% endif %}
+	{% empty %}
+		<p>No comments</p>
+	{% endfor %}
+	</div>
+	
+	{% if user.is_authenticated %}
+		<div class="post-edit-icons col-md-4">
+			<a href="{% url 'post_edit' pk=post.pk %}"><i class="fa fa-pencil"></i> Edit </a>
+			<b> | </b>
+			<a href="{% url 'post_remove' pk=post.pk %}"><i class="fa fa-times"></i> Remove </a>
+		</div>
+	{% endif %}
 {% endblock %}
