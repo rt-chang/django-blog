@@ -1,12 +1,13 @@
 .navbar {
 	margin-top: 0;
 	margin-bottom: 10px;
-	padding: 20px 20px 20px 30px;
+	background: none;
 }
 
 .navbar-brand {
 	font-size: 36pt;
-	text-decoration: none;
+	margin: 0px;
+	padding-left: 20px;
 }
 
 .content {
@@ -14,7 +15,7 @@
 	margin-top: 10px;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, a {
 	font-family: 'Sura', serif;
 }
 
@@ -34,22 +35,51 @@ p {
 	width: 100%;
 }
 
-.top-menu, .top-menu:hover, .top-menu:visited {
-	color: #FFFFFF;
-	float: right;
-	font-size: 26pt;
-	margin-right: 20px;
-}
-
 .post {
 	padding-left: 30px;
-	margin-bottom: 50px;
+	margin-bottom: 35px
 }
 
-.post h1 a, .post h1 a:visited {
-	color: #00000;
+.post h1 a {
+	color: #464a4c;
 }
 
 .comment {
 	margin: 20px 0px 20px 20px;
+}
+
+.container-footer {
+	margin: 0px;
+	padding-left: 15px;
+	padding-right: 15px; 
+	padding-bottom: 15px;
+}
+
+.list-inline > li {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.list-inline-item > a {
+	color: #292b2c
+}
+
+.container-fluid {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin: 0px;
+}
+
+.footer-content {
+	text-align: center;
+}
+
+header {
+	background-repeat:no-repeat !important;
+	-webkit-background-size:cover !important;
+	-moz-background-size:cover !important;
+	-o-background-size:cover !important;
+	background-size:cover !important;
+	background-position:center !important;
+	margin-bottom: 50px;
 }
