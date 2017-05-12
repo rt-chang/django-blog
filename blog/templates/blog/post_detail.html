@@ -19,7 +19,9 @@
 	</p>
 	
 	{% for comment in post.comments.all %}
-		{% if user.is_authenticated or comment.approved_comment %}
+		{% if user.is_authenticated %}
+			<a href="{% url 'comment_remove' pk=post.pk %}"><i class="fa fa-times" aria-hidden="true"> Remove Comment</i>
+		{% endif %}
 		<div class="comment">
 			<div class="date">
 				{{ comment.created_date }}
@@ -27,7 +29,6 @@
 			<strong>{{ comment.author }}</strong>
 			<p>{{ comment.text|linebreaks }}</p>
 		</div>
-		{% endif %}
 	{% empty %}
 		<p>No comments</p>
 	{% endfor %}
