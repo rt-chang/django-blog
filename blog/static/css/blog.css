@@ -4,12 +4,6 @@
 	background: none;
 }
 
-.navbar-brand {
-	font-size: 36pt;
-	margin: 0px;
-	padding-left: 20px;
-}
-
 h1, h2, h3, h4, a {
 	font-family: 'Sura', serif;
 }
@@ -70,11 +64,28 @@ p {
 }
 
 header {
-	background-repeat:no-repeat !important;
-	-webkit-background-size:cover !important;
-	-moz-background-size:cover !important;
-	-o-background-size:cover !important;
-	background-size:cover !important;
-	background-position:center !important;
 	margin-bottom: 50px;
+}
+
+.jumbotron {
+	background: none;
+	margin: 0px;
+	padding: 25px;
+}
+
+.jumbotron > h1 {
+	color: #ffffff;
+	font-family: 'Questrial', sans-serif;
+}
+
+.jumbotron > h2 {
+	color: #ffffff;
+	font-family: 'Questrial', sans-serif;
+}
+
+#banner {
+	text-align: center;
+	padding: 40px;
+	background-size: cover;
+	background-position: center;
 }
