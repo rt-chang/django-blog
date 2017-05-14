@@ -29,8 +29,8 @@
 						<div class="nav navbar-nav">
 							<a class="nav-item nav-link" href="{% url 'post_list' %}">Home</a>
 							<a class="nav-item nav-link" href="#">About</a>
-							<a class="nav-item nav-link" href="#">Resume</a>
-							<a class="nav-item nav-link" href="#">Contact</a>
+							<a class="nav-item nav-link" href="{% url 'resume' %}">Resume</a>
+							<!-- <a class="nav-item nav-link" href="{#% url 'contact_me' %#}">Contact</a> -->
 							{% if user.is_authenticated %}
 								<a class="nav-item nav-link" href="{% url 'post_new' %}"><i class="fa fa-plus"></i></a>
 								<a class="nav-item nav-link" href="{% url 'post_draft_list' %}"><i class="fa fa-pencil-square-o"></i></a>
@@ -50,7 +50,7 @@
                 <div class="jumbotron">
                     <h1 class="display-1"> Ray Chang </h1>
                     <hr>
-                    <h2 class="display-4"> Sub-heading </h2>
+                    <!-- <h2 class="display-4"> Sub-heading </h2> -->
                 </div>
             </div>
 		</header>
@@ -58,8 +58,27 @@
 		<!-- Content -->
 		<div class="container-fluid">
 			<div class="row">
+                <div class="col-md-8 content">
 					{% block content %}
 					{% endblock %}
+                </div>
+                <div class="col-md-4">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col sidebar-static">
+                                <div class="row">
+                                    <img src="{% static 'images/sidebar.jpg' %}" class="rounded-circle img-fluid mx-auto d-block">
+                                </div>
+                                <hr>
+                                <div class="row">
+
+                                </div>
+                            </div>
+                        </div>
+                        {% block sidebar %}
+                        {% endblock %}
+                    </div>
+                </div>
 			</div>
 		</div>
 		

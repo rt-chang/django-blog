@@ -10,6 +10,7 @@ h1, h2, h3, h4, a {
 
 p {
 	font-family: 'Raleway', sans-serif;
+	word-wrap: break-word;
 }
 
 .date {
@@ -76,11 +77,13 @@ header {
 .jumbotron > h1 {
 	color: #ffffff;
 	font-family: 'Questrial', sans-serif;
+	text-shadow: 2px 1px #000000;
 }
 
 .jumbotron > h2 {
 	color: #ffffff;
 	font-family: 'Questrial', sans-serif;
+	text-shadow: 2px 1px #000000;
 }
 
 #banner {
@@ -88,4 +91,9 @@ header {
 	padding: 40px;
 	background-size: cover;
 	background-position: center;
+}
+
+.sidebar-static {
+	padding-left: 40px;
+	padding-right: 40px;
 }

@@ -1,0 +1,173 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="resume">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Technologies</h5>
+                    <small>* Currently learning</small>
+                </div>
+                <div class="col-md-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Languages</th>
+                                <th>Libraries/Frameworks</th>
+                                <th>Tools</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Python</td>
+                                <td>Node.js</td>
+                                <td>JIRA</td>
+                            </tr>
+                            <tr>
+                                <td>C/C++</td>
+                                <td>jUnit</td>
+                                <td>Git/Github</td>
+                            </tr>
+                            <tr>
+                                <td>HTML/CSS</td>
+                                <td>Chai/Mocha</td>
+                                <td>Confluence</td>
+                            </tr>
+                            <tr>
+                                <td>SQL</td>
+                                <td>Bootstrap*</td>
+                                <td>Burp</td>
+                            </tr>
+                            <tr>
+                                <td>Javascript/Typescript*</td>
+                                <td>Django*</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Projects</h5>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h5>insightUBC Information Finder</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            <br>
+                            <i>Tech: Javascript/Typescript, Node.js, React, Chai/Mocha</i>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>Video Game Review App</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Helped implement the front-end for a Java application simulating a social video
+                            game review website. Created views for different classes of users (ie. admins, regular users)
+                            and the display of video game information by fetching/saving data from Oracle database.
+                            <br>
+                            <i>Tech: Java, JDBC, Oracle, SQL</i>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>Quarterback</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            For Finhacks 2016 in Toronto; team of 6 created an Android app which allowed for
+                            consumers to receive change digitally during their everyday transactions. Merchants would
+                            be able to deposit the change into the customer's digital wallet.
+                            Integrated the Stripe API to handle money transactions and create new users. Finished
+                            in top 5.
+                            <br>
+                            <i>Tech: Java, Javascript, Node.js, Express.js</i>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>Mind the Gap</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Implemented an Android-based trip planner for the London Underground subway system by
+                            parsing JSON data from Transit for London's public API. Integrated the OSMDroid library
+                            to plot stations and subway lines onto a map view.
+                            <br>
+                            <i>Tech: Java, Android SDK</i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Work Experience</h5>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h5>BlackBerry Limited</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Technical Security Coordinator Intern
+                            <br>
+                            Waterloo ON, Sep 2016 - Dec 2016
+                            <br>
+                            Contributed across a number of teams including
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>Vancouver Police Department</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Records/Correspondence Clerk
+                            <br>
+                            Vancouver BC, Mar 2013 - Jun 2015
+                            <br>
+                            Handled, processed, and maintained the integrity of sensitive
+                            documents for use in court and requests of information. Information
+                            routinely included written statements, photographs, medical records,
+                            and court orders. Consistently processed 100+ violation tickets per shift.
+                            Provided coverage in other departmental teams when needed and began training
+                            staff within a year of employment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Education</h5>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h5>University of British Columbia</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Bachelor of Computer Science
+                            <small> (Expected: Dec 2018)</small>
+                            <br>
+                            Vancouver BC, Sep 2015 - Present
+                        </p>
+                    </div>
+                    <div class="row">
+                        <h5>Simon Fraser University</h5>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Bachelor of Art, Criminology
+                            <br>
+                            Burnaby BC, Sep 2009 - Dec 2013
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

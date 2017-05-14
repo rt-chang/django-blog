@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-	<div class="comment col-md-8">
+	<div class="comment">
 		<p>Leave a Reply</p>
 		<form method="POST" class="post-form">
-		{% csrf_token %}
-			{{ form.as_p }}
-			<button type="submit" class="save btn btn-default">Post Comment</button>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Post Comment</button>
 		</form>
 	</div>
 {% endblock %}
