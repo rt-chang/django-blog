@@ -93,7 +93,12 @@ header {
 	background-position: center;
 }
 
-.sidebar-static {
+.sidebar {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.content {
 	padding-left: 40px;
 	padding-right: 40px;
 }
