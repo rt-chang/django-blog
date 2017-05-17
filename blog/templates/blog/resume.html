@@ -1,4 +1,16 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <header>
+        <div id="banner" style="background-image: url({% static 'images/sapa.jpg' %})">
+            <div class="jumbotron">
+                <h1 class="display-1 text-center"> Ray Chang </h1>
+                <h5>&#151; Résumé &#151;</h5>
+            </div>
+        </div>
+    </header>
+{% endblock %}
 
 {% block content %}
     <div class="resume">
@@ -58,6 +70,9 @@
                     </div>
                     <div class="row">
                         <p>
+                            Jan 2017 - Apr 2017
+                            <br>
+                            <br>
                             Our team of 2 designed and implemented a web application for individuals to search course/building
                             information at UBC. Clients could search for course averages, building room capacities, and
                             course sizes. Implemented a feature which would create a mock semester timetable based on the selection
@@ -71,6 +86,9 @@
                     </div>
                     <div class="row">
                         <p>
+                            Feb 2017 - Mar 2017
+                            <br>
+                            <br>
                             Helped implement the front-end for a Java application simulating a social video
                             game review website. Created views for different classes of users (ie. admins, regular users)
                             and the display of video game information by fetching/saving data from Oracle database.
@@ -83,6 +101,9 @@
                     </div>
                     <div class="row">
                         <p>
+                            Nov 2016
+                            <br>
+                            <br>
                             For Finhacks 2016 in Toronto; our team of 6 created an Android app which allowed for
                             consumers to receive change digitally during their everyday transactions. Merchants would
                             be able to deposit the change into the customer's digital wallet.
@@ -97,6 +118,9 @@
                     </div>
                     <div class="row">
                         <p>
+                            Jan 2016 - Apr 2016
+                            <br>
+                            <br>
                             Implemented an Android-based trip planner for the London Underground subway system by
                             parsing JSON data from Transit for London's public API. Integrated the OSMDroid library
                             to plot stations and subway lines onto a map view.
@@ -122,7 +146,11 @@
                             Waterloo ON, Sep 2016 - Dec 2016
                             <br>
                             <br>
-                            Contributed across a number of teams including
+                            Worked with a number of teams within the Global Technology Services department.
+                            Successfully automated a portion of the reporting process for database
+                            patching reports, which effectively reduced the report-generation time by ~99%. Tasked
+                            with analyzing production web applications for vulnerabilities and to identify possible false-positives.
+                            Co-ordinated the effort and contributed writing to update BlackBerry's corporate security whitepaper
                         </p>
                     </div>
                     <div class="row">

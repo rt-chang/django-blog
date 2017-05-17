@@ -11,7 +11,9 @@ urlpatterns = [
 	url(r'^post/(?P<pk>\d+)/remove/$', views.post_remove, name='post_remove'),
 	url(r'^post/(?P<pk>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
 	url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
-	url(r'^contact/$', views.contact_me, name='contact_me'),
-	url(r'^contact/thanks/$', views.contact_thanks, name="contact_thanks"),
-	url(r'^resume/$', views.resume, name="resume")
+	# url(r'^contact/$', views.contact_me, name='contact_me'),
+	# url(r'^contact/thanks/$', views.contact_thanks, name="contact_thanks"),
+	url(r'^resume/$', views.resume, name='resume'),
+	url(r'^tag/(?P<tag>\w+)/$', views.get_posts_with_tag, name='get_posts_with_tag'),
+	url(r'^about/$', views.about, name='about')
 ]

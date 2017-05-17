@@ -80,7 +80,7 @@ header {
 	text-shadow: 2px 1px #000000;
 }
 
-.jumbotron > h2 {
+.jumbotron > h5 {
 	color: #ffffff;
 	font-family: 'Questrial', sans-serif;
 	text-shadow: 2px 1px #000000;
@@ -98,7 +98,16 @@ header {
 	padding-right: 40px;
 }
 
-.content {
-	padding-left: 40px;
-	padding-right: 40px;
+td, th {
+	padding-left: 9px;
+	padding-right: 9px;
 }
+
+.pagination {
+	padding-left: 30px;
+}
+
+/*.content {*/
+	/*padding-left: 40px;*/
+	/*padding-right: 30px;*/
+/*}*/

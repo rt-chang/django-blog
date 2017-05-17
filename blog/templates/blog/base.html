@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load taggit_templatetags2_tags %}
+{% get_taglist as tags %}
 
 <html lang="en">
     <head>
@@ -28,8 +30,8 @@
 					<div class="collapse navbar-collapse" id="navbar-collapse-1">
 						<div class="nav navbar-nav">
 							<a class="nav-item nav-link" href="{% url 'post_list' %}">Home</a>
-							<a class="nav-item nav-link" href="#">About</a>
-							<a class="nav-item nav-link" href="{% url 'resume' %}">Resume</a>
+							<a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+							<a class="nav-item nav-link" href="{% url 'resume' %}">Résumé</a>
 							<!-- <a class="nav-item nav-link" href="{#% url 'contact_me' %#}">Contact</a> -->
 							{% if user.is_authenticated %}
 								<a class="nav-item nav-link" href="{% url 'post_new' %}"><i class="fa fa-plus"></i></a>
@@ -45,14 +47,8 @@
 		</nav>
 		
 		<!-- Header -->
-		<header>
-            <div id="banner" style="background-image: url({% static 'images/skyline1.jpg' %})">
-                <div class="jumbotron">
-                    <h1 class="display-1"> Ray Chang </h1>
-                    <!-- <h2 class="display-4"> Sub-heading </h2> -->
-                </div>
-            </div>
-		</header>
+        {% block banner %}
+        {% endblock %}
 		
 		<!-- Content -->
 		<div class="container-fluid">
@@ -62,25 +58,36 @@
 					{% endblock %}
                 </div>
                 <div class="col-md-4 sidebar">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col sidebar-static">
-                                <div class="row">
-                                    <img src="{% static 'images/sidebar.jpg' %}" class="rounded-circle img-fluid mx-auto d-block">
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <p class="text-center">
-                                        Hey there, I'm Raymond
-                                        <br>
-                                        <b>I am:</b> a CS student, a weekend hiker,
-                                        deathly afraid of heights
-                                    </p>
-                                </div>
+                    <div class="row">
+                        <div class="col sidebar-static">
+                            <div class="row">
+                                <img src="{% static 'images/sidebar.jpg' %}" class="rounded-circle img-fluid mx-auto d-block">
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <p class="text-center">
+                                    Hey there, I'm Raymond
+                                    <br>
+                                    <b>I am:</b> a UBC CS student, a weekend hiker, Vancouverite,
+                                    and deathly afraid of heights.
+                                </p>
                             </div>
                         </div>
-                        {% block sidebar %}
-                        {% endblock %}
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col sidebar-tags">
+                            <p class="text-center">&#151; Categories &#151;</p>
+                            <div class="row">
+                                <ul>
+                                    {% for tag in tags %}
+                                        <li>
+                                            <a href="{% url 'get_posts_with_tag' tag=tag %}">{{tag}} ({{tag.num_times}})</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 			</div>

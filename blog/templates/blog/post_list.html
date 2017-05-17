@@ -1,5 +1,19 @@
 {% extends 'blog/base.html' %}
 
+{% load static %}
+{% load taggit_templatetags2_tags %}
+
+
+{% block banner %}
+    <header>
+        <div id="banner" style="background-image: url({% static 'images/skyline1.jpg' %})">
+            <div class="jumbotron">
+                <h1 class="display-1 text-center"> Ray Chang </h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
 {% block content %}
 	{% for post in posts %}
 		<div class="post">
@@ -9,6 +23,41 @@
 			</div>
 			<p>{{ post.text|safe|truncatechars:"600"|linebreaksbr }}<a href="{% url 'post_detail' pk=post.pk %}">Read More</a></p>
 			<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+            {% get_tags_for_object post as tags %}
+            {% if tags %}
+                <p>
+                    Tags:
+                    {% for tag in tags %}
+                        <a href="{% url 'get_posts_with_tag' tag=tag %}">{{tag}}</a>
+                        {% if not forloop.last %}
+                            /
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            {% endif %}
 		</div>
+        {% empty %}
+        <p class="text-center"> No Posts Found </p>
 	{% endfor %}
+    {% if posts %}
+        <div class="pagination justify-content-center">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}">
+                        <i class="fa fa-angle-double-left"></i>
+                    </a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}">
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
 {% endblock %}

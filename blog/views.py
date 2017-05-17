@@ -1,15 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.core.mail import send_mail
+# from django.http import HttpResponseRedirect
 
 from .models import Post, Comment
 from .forms import PostForm, CommentForm, ContactForm
 
+POSTS_PER_PAGE = 5
+
 
 def post_list(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+	posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+	paginator = Paginator(posts_list, POSTS_PER_PAGE)
+
+	page = request.GET.get('page')
+	try:
+		posts = paginator.page(page)
+	except PageNotAnInteger:
+		posts = paginator.page(1)
+	except EmptyPage:
+		posts = paginator.page(paginator.num_pages)
 	return render(request, 'blog/post_list.html', {'posts': posts})
 
 
@@ -26,10 +38,18 @@ def post_new(request):
 			post = form.save(commit=False)
 			post.author = request.user
 			post.save()
+			form.save_m2m()
 			return redirect('post_detail', pk=post.pk)
 	else:
 		form = PostForm()
-	return render(request, 'blog/post_edit.html', {'form': form})
+
+	indexes = Post.objects.all()
+
+	context = {'form': form,
+			   'indexes': indexes
+			   }
+
+	return render(request, 'blog/post_edit.html', context)
 
 
 @login_required
@@ -41,10 +61,18 @@ def post_edit(request, pk):
 			post = form.save(commit=False)
 			post.author = request.user
 			post.save()
+			form.save_m2m()
 			return redirect('post_detail', pk=post.pk)
 	else:
 		form = PostForm(instance=post)
-	return render(request, 'blog/post_edit.html', {'form': form})
+
+	indexes = Post.objects.all()
+
+	context = {'form': form,
+			   'indexes': indexes
+			   }
+
+	return render(request, 'blog/post_edit.html', context)
 
 
 @login_required
@@ -88,23 +116,43 @@ def comment_remove(request, pk):
 	return redirect('post_detail', pk=comment.post.pk)
 
 
-def contact_me(request):
-	if request.method == "POST":
-		form = ContactForm(request.POST)
-		if form.is_valid():
-			subject = form.cleaned_data['subject']
-			sender = form.cleaned_data['contact_email']
-			message = form.cleaned_data['subject']
-			send_mail(subject, message, sender, ['rchang21@gmail.com'])
-			return HttpResponseRedirect('/contact/thanks/')
-	else:
-		form = ContactForm()
-	return render(request, 'blog/contact_form.html', {'form': form})
-
-
-def contact_thanks(request):
-	return render(request, 'blog/contact_thanks.html')
+# def contact_me(request):
+# 	if request.method == "POST":
+# 		form = ContactForm(request.POST)
+# 		if form.is_valid():
+# 			subject = form.cleaned_data['subject']
+# 			sender = form.cleaned_data['contact_email']
+# 			message = form.cleaned_data['subject']
+# 			send_mail(subject, message, sender, ['rchang21@gmail.com'])
+# 			return HttpResponseRedirect('/contact/thanks/')
+# 	else:
+# 		form = ContactForm()
+# 	return render(request, 'blog/contact_form.html', {'form': form})
+#
+#
+# def contact_thanks(request):
+# 	return render(request, 'blog/contact_thanks.html')
 
 
 def resume(request):
 	return render(request, 'blog/resume.html')
+
+
+def get_posts_with_tag(request, tag):
+	posts_list = Post.objects.filter(published_date__lte=timezone.now())\
+		.filter(tags__name__in=[tag])\
+		.order_by('-published_date')
+	paginator = Paginator(posts_list, POSTS_PER_PAGE)
+
+	page = request.GET.get('page')
+	try:
+		posts = paginator.page(page)
+	except PageNotAnInteger:
+		posts = paginator.page(1)
+	except EmptyPage:
+		posts = paginator.page(paginator.num_pages)
+	return render(request, 'blog/post_list.html', {'posts': posts})
+
+
+def about(request):
+	return render(request, 'blog/about.html')

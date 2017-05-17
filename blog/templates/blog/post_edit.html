@@ -1,4 +1,16 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <header>
+        <div id="banner" style="background-image: url({% static 'images/skyline1.jpg' %})">
+            <div class="jumbotron">
+                <h1 class="display-1 text-center"> Edit Post </h1>
+                <!-- <h2 class="display-4"> Sub-heading </h2> -->
+            </div>
+        </div>
+    </header>
+{% endblock %}
 
 {% block content %}
 	<div class="comment">
