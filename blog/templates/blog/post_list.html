@@ -9,6 +9,7 @@
         <div id="banner" style="background-image: url({% static 'images/skyline1.jpg' %})">
             <div class="jumbotron">
                 <h1 class="display-1 text-center"> Ray Chang </h1>
+                <h5> </h5>
             </div>
         </div>
     </header>
@@ -21,7 +22,7 @@
 			<div class="date">
 				<p>Published on: {{ post.published_date }}</p>
 			</div>
-			<p>{{ post.text|safe|truncatechars:"600"|linebreaksbr }}<a href="{% url 'post_detail' pk=post.pk %}">Read More</a></p>
+			<p>{{ post.markdown_to_html|safe|truncatechars:"600"|linebreaksbr }}<a href="{% url 'post_detail' pk=post.pk %}">Read More</a></p>
 			<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
             {% get_tags_for_object post as tags %}
             {% if tags %}
